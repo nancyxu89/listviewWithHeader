@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cr.test"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <!-- http://192.168.1.102:8090/download.html -->
+    <!-- http://192.168.167.33:8088//mi-tracker-web/download.html -->
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data
+                    android:host="192.168.1.102"
+                    android:path="/download.html"
+                    android:port="8090"
+                    android:scheme="http" />
+                <data
+                    android:host="192.168.1.102"
+                    android:path="/download.html"
+                    android:port="8090"
+                    android:scheme="nns" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

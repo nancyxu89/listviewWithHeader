@@ -4,10 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.ClipDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -24,6 +29,8 @@ public class MainActivity extends Activity
 
 	HeaderViewListView listView;
 	ImageView headerIV;
+	
+	ImageView image;
 
 	public enum Items
 	{
@@ -98,7 +105,48 @@ public class MainActivity extends Activity
 		headerIV = (ImageView) view.findViewById(R.id.header_iv);
 		listView.addHeaderView(view);
 		listView.setHeaderImageView(headerIV);
+		
+		initClip();
 	}
+
+	private void initClip()
+	{
+		image=(ImageView)findViewById(R.id.image);
+		//获取图片所显示的ClipDrawble对象  
+        final ClipDrawable drawable = (ClipDrawable)image.getDrawable();  
+        final Handler handler = new Handler()  
+        {  
+            public void handleMessage(Message msg)  
+            {  
+                if(msg.what == 0x1233)  
+                {  
+                    if(drawable.getLevel() >= 10000){
+                        drawable.setLevel(0);  
+                    }
+                    //修改ClipDrawable的level值  
+                    drawable.setLevel(drawable.getLevel() +500);  
+                }  
+            }  
+        };  
+                       
+        //时间类
+        final Timer timer = new Timer();  
+        timer.schedule(new TimerTask()  
+        {  
+            public void run()  
+            {  
+                Message msg = new Message();  
+                msg.what = 0x1233;  
+                //发送消息,通知应用修改ClipDrawable对象的level值  
+                handler.sendMessage(msg);  
+                //取消定时器  
+//                if(drawable.getLevel() >= 10000)  
+//                {  
+//                    timer.cancel();  
+//                }  
+            }  
+        },0,300);  
+    }  
 
 	private void initView()
 	{

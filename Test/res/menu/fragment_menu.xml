@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    
+    <item android:id="@+id/title_item_one"
+        android:title="title_one"
+        android:checked="true"
+        android:menuCategory="alternative"
+        android:orderInCategory="1"/>
+    <item android:id="@+id/title_item_two"
+        android:menuCategory="alternative"
+        android:title="title_two"
+        android:checked="true"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/title_item_three"
+        android:menuCategory="alternative"
+        android:title="title_three"
+        android:checked="true"
+        android:orderInCategory="3"/>
+    <item android:id="@+id/title_item_four"
+        android:menuCategory="alternative"
+        android:title="title_four"
+        android:checked="true"
+        android:orderInCategory="4"/>
+    <item android:id="@+id/title_item_five"
+        android:menuCategory="alternative"
+        android:title="title_five"
+        android:checked="true"
+        android:orderInCategory="5"/>
+</menu>
